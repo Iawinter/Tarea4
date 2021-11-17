@@ -2,10 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import requests
 import json
-import pandas as pd
+#import pandas as pd
 from collections import defaultdict
-import gspread
-from gspread_dataframe import set_with_dataframe
+#import gspread
+#from gspread_dataframe import set_with_dataframe
 from datetime import date
 
 def suscripcion():
@@ -22,5 +22,5 @@ def eliminar_sus():
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    return HttpResponse("HOLAAA.")
 # Create your views here.
