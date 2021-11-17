@@ -1,16 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import requests
+import json
 import pandas as pd
 from collections import defaultdict
 import gspread
 from gspread_dataframe import set_with_dataframe
 from datetime import date
-
-paises = ["AUS", "USA", "CHL", "NLD", "IRL", "JPN"]
-atributos = ["GHO", "YEAR", "Display", "COUNTRY", "SEX", "GHECAUSES", "AGEGROUP", "Numeric", "Low", "High",
-             "Presion arterial", "Glucosa", "Colesterol", "Alcohol", "Cigarros", "Tabaco"]
-indicadores = ["Total de operaciones recibidas"]
 
 def suscripcion():
     url = ''
