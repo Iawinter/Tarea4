@@ -4,5 +4,6 @@ from . import views
 
 app_name = "pub"
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.suscripcion, name='suscripcion'),
+    path('elim/', views.eliminar_sus, name='eliminar_sus'),
 ]

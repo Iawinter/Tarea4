@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['tarea4taller.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
