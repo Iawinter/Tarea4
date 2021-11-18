@@ -29,5 +29,5 @@ def eliminar_sus(request):
 
 
 def index(request):
-    return HttpResponse("HOLAAA.")
+    return render(request, 'index.html')
 # Create your views here.
