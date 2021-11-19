@@ -20,6 +20,10 @@ def suscripcion(request):
     body = json.dumps(body)
     r = requests.post(f'https://us-central1-taller-integracion-310700.cloudfunctions.net/tarea-4-notifications/subscriptions/26425', headers={"Content-type": "application/json"}, data = body)
     r = r.json()
+    if request.method == 'POST':
+        j = json.loads(request.body)
+        # received_json_data=json.loads(request.body)
+        print(j)
     return Response(r, status=status.HTTP_200_OK)
 
 @api_view(['DELETE', 'GET'])
@@ -30,4 +34,17 @@ def eliminar_sus(request):
 
 def index(request):
     return render(request, 'index.html')
+
+lista = []
+
+def mensajes(request):
+    #r = requests.post(f'https://tarea4taller.herokuapp.com/')
+    #r = r.json()
+    #lista.append(r)
+    if request.method == 'POST':
+        r = json.loads(request.body)
+        # received_json_data=json.loads(request.body)
+        print(r)
+    return render(request, 'index.html', lista, status=status.HTTP_200_OK)
+
 # Create your views here.
