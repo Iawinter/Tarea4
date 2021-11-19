@@ -13,6 +13,8 @@ from collections import defaultdict
 #from gspread_dataframe import set_with_dataframe
 from datetime import date
 
+lista = []
+
 @api_view(['POST', 'GET'])
 def suscripcion(request):
     url = 'https://tarea4taller.herokuapp.com/'
@@ -23,8 +25,9 @@ def suscripcion(request):
     if request.method == 'POST':
         j = json.loads(request.body)
         # received_json_data=json.loads(request.body)
+        lista.append(j)
         print(j)
-    return Response(r, status=status.HTTP_200_OK)
+    return Response(lista, status=status.HTTP_200_OK)
 
 @api_view(['DELETE', 'GET'])
 def eliminar_sus(request):
@@ -34,8 +37,6 @@ def eliminar_sus(request):
 
 def index(request):
     return render(request, 'index.html')
-
-lista = []
 
 def mensajes(request):
     #r = requests.post(f'https://tarea4taller.herokuapp.com/')
