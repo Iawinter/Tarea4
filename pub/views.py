@@ -22,12 +22,7 @@ def suscripcion(request):
     body = json.dumps(body)
     r = requests.post(f'https://us-central1-taller-integracion-310700.cloudfunctions.net/tarea-4-notifications/subscriptions/26425', headers={"Content-type": "application/json"}, data = body)
     r = r.json()
-    if request.method == 'POST':
-        j = json.loads(request.body)
-        # received_json_data=json.loads(request.body)
-        lista.append(j)
-        print(j)
-    return Response(lista, status=status.HTTP_200_OK)
+    return Response(r, status=status.HTTP_200_OK)
 
 @api_view(['DELETE', 'GET'])
 def eliminar_sus(request):
@@ -38,14 +33,22 @@ def eliminar_sus(request):
 def index(request):
     return render(request, 'index.html')
 
+@api_view(['POST', 'GET'])
 def mensajes(request):
-    #r = requests.post(f'https://tarea4taller.herokuapp.com/')
-    #r = r.json()
-    #lista.append(r)
-    if request.method == 'POST':
-        r = json.loads(request.body)
-        # received_json_data=json.loads(request.body)
-        print(r)
+    r = requests.post(f'https://tarea4taller.herokuapp.com/')
+    r = r.json()
+    lista.append(r)
+    print(r)
     return render(request, 'index.html', lista, status=status.HTTP_200_OK)
 
-# Create your views here.
+
+
+#Create your views here.
+#df = pd.DataFrame(data=lista).T
+
+#gc = gspread.service_account(filename='taller-proyecto-331020-6c7b557c5aa0.json')
+#sh = gc.open_by_key('6c7b557c5aa0742aa2eb6eb22a90431192dc9740')
+#worksheet = sh.get_worksheet(0) #-> 0 - first sheet, 1 - second sheet etc.
+
+# APPEND DATA TO SHEET
+#set_with_dataframe(worksheet, df) #-> THIS EXPORTS YOUR DATAFRAME TO THE GOOGLE SHEET
