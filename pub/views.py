@@ -39,7 +39,7 @@ def mensajes(request):
     lista.append(r)
     print(r)
 
-    return render(request, 'index.html', lista, status=status.HTTP_200_OK)
+    return render(request, 'index.html', status=status.HTTP_200_OK)
 
 
 
