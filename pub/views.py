@@ -17,7 +17,7 @@ lista = []
 
 @api_view(['POST', 'GET'])
 def suscripcion(request):
-    url = 'https://tarea4taller.herokuapp.com/'
+    url = 'https://tarea4taller.herokuapp.com'
     body = {"url": url}
     body = json.dumps(body)
     r = requests.post(f'https://us-central1-taller-integracion-310700.cloudfunctions.net/tarea-4-notifications/subscriptions/26425', headers={"Content-type": "application/json"}, data = body)
@@ -35,7 +35,7 @@ def index(request):
 
 @api_view(['POST', 'GET'])
 def mensajes(request):
-    r = requests.post(f'https://tarea4taller.herokuapp.com/')
+    r = requests.post(f'https://tarea4taller.herokuapp.com')
     r = r.json()
     lista.append(r)
     print(r)
