@@ -39,6 +39,7 @@ def mensajes(request):
     r = r.json()
     lista.append(r)
     print(r)
+
     return render(request, 'index.html', lista, status=status.HTTP_200_OK)
 
 
