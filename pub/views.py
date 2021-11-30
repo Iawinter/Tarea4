@@ -45,7 +45,6 @@ class MensajesList(APIView):
         lista.append(info['message']['data'])
         print(lista)
         nuevo_mensaje = Mensajes.objects.create(id=info['message']['data'])
-        nuevo_mensaje.self = self
         nuevo_mensaje.save()
         serializer = MensajesSerializer(nuevo_mensaje)
         return Response(serializer.data, status=status.HTTP_200_OK)
