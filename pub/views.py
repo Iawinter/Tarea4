@@ -35,7 +35,7 @@ def index(request):
 
 @api_view(['POST', 'GET'])
 def mensajes(request):
-    r = requests.post(f'https://tarea4taller.herokuapp.com/')
+    r = requests.get(f'https://tarea4taller.herokuapp.com/')
     lista.append(r)
     print(r)
 
