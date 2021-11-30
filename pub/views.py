@@ -40,6 +40,11 @@ def index(request):
 
 class MensajesList(APIView):
 
+    def get(self, request):
+        mensajes = Mensajes.objects.all()
+        serializer = MensajesSerializer(mensajes, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
     def post(self, request):
         info = request.data
         lista.append(info['message']['data'])
