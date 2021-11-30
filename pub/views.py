@@ -1,9 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view, renderer_classes
 from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
 import requests
 import json
+import base64
+from . models import Mensajes
+from . serializers import MensajesSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -33,12 +37,18 @@ def eliminar_sus(request):
 def index(request):
     return render(request, 'index.html')
 
-@api_view(['POST', 'GET'])
-def mensajes(request):
-    r = requests.post(f'https://tarea4taller.herokuapp.com/', headers={"Content-type": "application/json"})
-    lista.append(r)
-    print(r)
-    return render(request, 'index.html', status=status.HTTP_200_OK)
+
+class MensajesList(APIView):
+
+    def post(self, request):
+        info = request.data
+        lista.append(info['message']['data'])
+        print(lista)
+        nuevo_mensaje = Mensajes.objects.create(id=info['message']['data'])
+        nuevo_mensaje.self = self
+        nuevo_mensaje.save()
+        serializer = MensajesSerializer(nuevo_mensaje)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 
