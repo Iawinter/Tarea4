@@ -49,12 +49,7 @@ class MensajesList(APIView):
         info = request.data
         lista.append(info['message']['data'])
         print(lista)
-        yo = 'https://tarea4taller.herokuapp.com/'
-        nuevo_mensaje = Mensajes.objects.create(id=info['message']['data'])
-        nuevo_mensaje.self = yo
-        nuevo_mensaje.save()
-        serializer = MensajesSerializer(nuevo_mensaje)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_200_OK)
 
 
 
